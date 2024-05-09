@@ -48,7 +48,7 @@ export const LogViewer = () => {
                                     <label className='text-white font-[500] text-lg'>{key.charAt(0).toUpperCase() + key.slice(1)}: </label>
                                     <input 
                                         onChange={handleChange} 
-                                        className='w-full py-1 px-3 my-1 rounded-full text-blue-700 font-[500]'
+                                        className='w-full py-1 px-3 my-1 rounded-full text-blue-700 font-[500] outline-none focus:border-b-2 border-blue-600'
                                         type={(key === 'password') ? 'password' : 'text'} 
                                         name={key} 
                                         placeholder={`Enter your ${key.charAt(0).toUpperCase() + key.slice(1)}...`} 

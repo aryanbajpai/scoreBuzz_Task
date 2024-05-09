@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     runsCount: 0,
+    striker: null,
 }
 
 export const countRunsSlice = createSlice({
@@ -10,7 +11,7 @@ export const countRunsSlice = createSlice({
     reducers: {
         addRuns(state, action){
             state.runsCount += action.payload;
-        }
+        },
     }
 });
 

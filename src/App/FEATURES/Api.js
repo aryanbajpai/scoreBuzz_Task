@@ -9,7 +9,7 @@ export const teamApi = createApi({
     }),
 
     //for AutoFetching
-    tagTypes: ['Commentary'],
+    tagTypes: ['First', 'Second'],
 
     //Add the ENDPOINTS => uses BUILDER pattern
     endpoints: (builder) => ({
@@ -23,17 +23,29 @@ export const teamApi = createApi({
         }),
 
         //CREATE data in Server
-        addHistory: builder.mutation({
+        addHistoryOne: builder.mutation({
             query: (history) => ({
-                url:'/commentary',
+                url: '/first',
                 method: 'POST',
                 body: JSON.stringify(history)
             }),
-            invalidatesTags: ['Commentary'],
+            invalidatesTags: ['First'],
+        }),//CREATE data in Server
+        addHistoryTwo: builder.mutation({
+            query: (history) => ({
+                url: '/second',
+                method: 'POST',
+                body: JSON.stringify(history)
+            }),
+            invalidatesTags: ['Second'],
         }),
-        useHistory: builder.query({
-            query: () => 'commentary',
-            providesTags: ['Commentary']
+        useHistoryOne: builder.query({
+            query: () => 'first',
+            providesTags: ['First']
+        }),
+        useHistoryTwo: builder.query({
+            query: () => 'second',
+            providesTags: ['Second']
         }),
 
         //DELETE data from Server
@@ -43,9 +55,9 @@ export const teamApi = createApi({
                 method: 'DELETE',
             }),
             invalidatesTags: ['Commentary'],
-        })
+        }),
     })
 });
 
-export const { useGetTeamOneQuery, useGetTeamTwoQuery, useAddHistoryMutation, useUseHistoryQuery, useUndoHistoryMutation } = teamApi;
+export const { useGetTeamOneQuery, useGetTeamTwoQuery, useAddHistoryOneMutation, useAddHistoryTwoMutation, useUseHistoryOneQuery, useUseHistoryTwoQuery, useUndoHistoryMutation } = teamApi;
 //use this HOOK in App Component to fetch data
